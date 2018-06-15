@@ -1,7 +1,6 @@
 {
   "presets": [
-    "env",
-    "es2017"
+    "env"
   ],
   "plugins": [
     "transform-decorators-legacy",
@@ -19,13 +18,18 @@
       "root": ["./src"],
       "alias": {
         "Components": "./src/components",
+        "Fields":     "./src/components/fields",
+        "Stateless":  "./src/components/stateless",
         "Store":      "./src/store",
         "Constants":  "./src/constants",
         "Ducks":      "./src/ducks",
         "Data":       "./src/data",
-        "Utils":       "./src/utils",
+        "Utils":      "./src/utils",
         "Pages":      "./src/pages",
-        "Layouts":    "./src/layouts"
+        "Layouts":    "./src/layouts",
+        "Firebase":   "./src/firebase",
+        "Assets":     "./src/assets",
+        "HOC":        "./src/hoc"
       }
     }]
   ]

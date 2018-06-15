@@ -1,0 +1,10 @@
+.fullHeight {
+  height: 100%;
+}
+
+.authPageLogo {
+  flex-direction: row;
+  height: 100%;
+  padding: 0px 40px;
+  align-content: center
+}

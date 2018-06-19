@@ -11,7 +11,8 @@ import { auth } from 'Firebase/firebase';
 import { setUserToState } from 'Ducks/user';
 import AuthPage from 'Pages/auth-page';
 import LoadingScreen from 'Components/loading-screen';
-import PrivateRoute from 'Components/private-route';
+import { PrivateRoute } from 'Components/override-routes';
+import { Dashboard } from 'Templates';
 
 const mapStateToProps = () => ({});
 const mapDispatchToProps = dispatch => bindActionCreators({
@@ -46,8 +47,14 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <PrivateRoute redirect="/404" path="/(login|register|recovery)/" component={AuthPage} authed={authed} />
-          <Route component={() => '404'} />
+          <PrivateRoute redirect="events" path="/login" authed={authed} noAuth>
+            <AuthPage />
+          </PrivateRoute>
+          <PrivateRoute redirect="login" path="/events" authed={authed}>
+            <Dashboard />
+          </PrivateRoute>
+          {/* <PrivateRoute redirect="/login" path="/events" component={EventsPage} authed={authed} /> */}
+          {/* <Route component={() => '404'} /> */}
         </Switch>
       </Router>
     );

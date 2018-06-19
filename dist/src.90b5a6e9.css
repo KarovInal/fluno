@@ -21263,25 +21263,17 @@ li.ant-tree-treenode-disabled > .ant-tree-node-content-wrapper:hover {
   }
 }
 
-/*# sourceMappingURL=antd.css.map*/body {
+/*# sourceMappingURL=antd.css.map*/html,
+body,
+#root {
   font-family: 'Istok Web', sans-serif;
-  height: 100%;
-}
-
-body > div {
   height: 100%;
   background-color: #E5E5E5;
 }
-
-p {
-  margin: 0px;
+#root .ant-input {
+  background-color: #F9FAFA;
+  border: solid #DEE3E1 1px;
 }
-
-a {
-  text-decoration: underline
-}
-
-a:hover {
-  color: inherit;
-  text-decoration: underline;
+#root .ant-badge {
+  height: 30px;
 }

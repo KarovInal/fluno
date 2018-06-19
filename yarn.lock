@@ -188,6 +188,10 @@
   version "0.2.8"
   resolved "https://registry.yarnpkg.com/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.2.8.tgz#38a936b60b898a1ad0f3719543ff1a1031f60f8b"
 
+Template@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/Template/-/Template-0.4.0.tgz#bb07930457a759a5ec76783d190b7ea559c869db"
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"

@@ -1,7 +1,7 @@
 import React, { Component }from 'react';
 import styled from 'styled-components';
 import { Row, Col } from 'antd';
-import MainContainer from 'Components/main-container';
+import MainContainer from 'Templates/main-container';
 import Login from 'Components/login';
 
 import styles from './style.css';

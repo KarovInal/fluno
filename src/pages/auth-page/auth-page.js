@@ -2,7 +2,12 @@ import React, { Component }from 'react';
 import styled from 'styled-components';
 import { Row, Col } from 'antd';
 import MainContainer from 'Templates/main-container';
-import Login from 'Components/login';
+import Login from 'Components/auth/login';
+import Registration from 'Components/auth/registration';
+import {
+  LOGIN,
+  REGISTRATION
+} from 'Constants/routes';
 
 import styles from './style.css';
 import authBackgroundImg from 'Assets/img/auth-background.jpg';
@@ -21,6 +26,19 @@ const LogoOnAuth = styled.p`
 `;
 
 class AuthPage extends Component {
+  renderAuthForm = () => {
+    const { pathname } = this.props.location;
+
+    switch(pathname) {
+      case LOGIN:
+        return <Login />
+      case REGISTRATION:
+        return <Registration />
+      default:
+        '';
+    }
+  };
+
   render() {
     return (
       <AuthPageWrap>
@@ -33,7 +51,9 @@ class AuthPage extends Component {
                 <LogoOnAuth>FLUNO</LogoOnAuth>
               </Col>
               <Col span={24}>
-                <Login />
+                {
+                  this.renderAuthForm()
+                }
               </Col>
             </Row>
           </Col>

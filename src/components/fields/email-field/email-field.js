@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Input, Form } from 'antd';
-import { Field } from 'redux-form';
+import { Input } from 'antd';
 import FormItem from 'Fields/form-item';
 import FormFieldHOC from 'HOC/form-field-hoc';
 

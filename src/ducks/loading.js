@@ -1,3 +1,5 @@
+import { get } from 'lodash';
+
 export const LOADIGN_START = 'LOADIGN_START';
 export const LOADIGN_STOP = 'LOADIGN_STOP';
 
@@ -39,3 +41,7 @@ export const loadingStop = type => ({
     key: type
   }
 });
+
+// Selectors
+
+export const isLoading = type => state => get(state, ['loading', type, 'loading'], false);

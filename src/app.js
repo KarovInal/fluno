@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import {
   Route,
   BrowserRouter as Router,
   Switch
 } from 'react-router-dom';
-import { setUserToState } from 'Ducks/user';
+import { checkAuth, FETCH_AUTH } from 'Ducks/trainer';
+import { isLoading } from 'Ducks/loading';
+import ProtectedRoute from 'HOC/protected-route';
 import AuthPage from 'Pages/auth-page';
+import LoadingScreen from 'Components/loading-screen';
 import { Dashboard } from 'Templates';
 import {
   LOGIN,
@@ -15,21 +17,32 @@ import {
   REGISTRATION
 } from 'Constants/routes';
 
-const mapStateToProps = () => ({});
-const mapDispatchToProps = dispatch => bindActionCreators({
-  setUserToState
-}, dispatch);
+const stateToProps = state => ({
+  isFetchCheckAuth: isLoading(FETCH_AUTH)(state)
+});
+const dispatchToProps = {
+  checkAuth
+};
 
-@connect(mapStateToProps, mapDispatchToProps)
+@connect(stateToProps, dispatchToProps)
 class App extends Component {
+  componentDidMount() {
+    this.props.checkAuth();
+  };
+
   render() {
+    const { isFetchCheckAuth } = this.props;
+
+    if(isFetchCheckAuth) {
+      return <LoadingScreen />;
+    }
+
     return (
       <Router>
         <Switch>
-          <Route path={ LOGIN } component={ AuthPage } />
-          <Route path={ REGISTRATION } component={ AuthPage } />
-          <Route path={ EVENTS } component={ Dashboard } />
-          {/* <PrivateRoute redirect="/login" path="/events" component={EventsPage} authed={authed} /> */}
+          <ProtectedRoute noAuth path={ LOGIN } component={ AuthPage } redirect={ EVENTS } />
+          <ProtectedRoute noAuth path={ REGISTRATION } component={ AuthPage } redirect={ EVENTS } />
+          <ProtectedRoute path={ EVENTS } component={ Dashboard } redirect={ LOGIN } />
           <Route component={() => '404'} />
         </Switch>
       </Router>

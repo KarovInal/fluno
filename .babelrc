@@ -19,6 +19,7 @@
       "alias": {
         "Components": "./src/components",
         "Fields":     "./src/components/fields",
+        "Selectors":  "./src/selectors",
         "Stateless":  "./src/components/stateless",
         "Templates":  "./src/templates",
         "Store":      "./src/store",
@@ -28,7 +29,6 @@
         "Utils":      "./src/utils",
         "Pages":      "./src/pages",
         "Layouts":    "./src/layouts",
-        "Firebase":   "./src/firebase",
         "Assets":     "./src/assets",
         "HOC":        "./src/hoc"
       }

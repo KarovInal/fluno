@@ -5,7 +5,7 @@ import {
   SimpleLink,
   LoignButton,
   SimpleLabel
-} from './stateless';
+} from 'Components/auth/components/stateless';
 
 export {
   AuthLabel,

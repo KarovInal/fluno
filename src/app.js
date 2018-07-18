@@ -11,9 +11,11 @@ import ProtectedRoute from 'HOC/protected-route';
 import AuthPage from 'Pages/auth-page';
 import LoadingScreen from 'Components/loading-screen';
 import { Dashboard } from 'Templates';
+import ProfilePage from 'Pages/profile-page';
 import {
   LOGIN,
   EVENTS,
+  PROFILE,
   REGISTRATION
 } from 'Constants/routes';
 
@@ -40,9 +42,10 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <ProtectedRoute noAuth path={ LOGIN } component={ AuthPage } redirect={ EVENTS } />
-          <ProtectedRoute noAuth path={ REGISTRATION } component={ AuthPage } redirect={ EVENTS } />
+          <ProtectedRoute noAuth path={ LOGIN } component={ AuthPage } redirect={ PROFILE } />
+          <ProtectedRoute noAuth path={ REGISTRATION } component={ AuthPage } redirect={ PROFILE } />
           <ProtectedRoute path={ EVENTS } component={ Dashboard } redirect={ LOGIN } />
+          <ProtectedRoute path={ PROFILE } component={ ProfilePage } redirect={ LOGIN } />
           <Route component={() => '404'} />
         </Switch>
       </Router>

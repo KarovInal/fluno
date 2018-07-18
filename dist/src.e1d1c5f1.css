@@ -21515,7 +21515,7 @@ body,
 #root {
   font-family: 'Istok Web', sans-serif;
   height: 100%;
-  background-color: #E5E5E5;
+  background-color: #f9fafa;
 }
 #root .ant-input {
   background-color: #F9FAFA;
@@ -21523,4 +21523,29 @@ body,
 }
 #root .ant-badge {
   height: 30px;
+}
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: #f1f1f1;
+  border-right: solid rgba(103, 107, 105, 0.5) 2px;
+}
+.ant-menu-root.ant-menu-vertical,
+.ant-menu-root.ant-menu-vertical-left,
+.ant-menu-root.ant-menu-vertical-right,
+.ant-menu-root.ant-menu-inline {
+  border: none;
+}
+.ant-menu-root > * :after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  height: 1px;
+  width: 175px;
+  margin-left: -87.5px;
+  background-color: #DEE3E1;
+}
+.ant-menu-root :last-child :after {
+  content: '';
+  display: none;
 }

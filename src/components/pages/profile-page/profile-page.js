@@ -7,6 +7,7 @@ import SimpleLine from 'Atoms/simple-line';
 import HeaderOrganism from 'Organisms/header-organism';
 import LeftSideMenuOrganism from 'Organisms/left-side-menu-organism';
 import ProfileEdit from 'Organisms/profile-edit';
+import FooterOrganism from 'Organisms/footer-organism';
 import SimpleBlock from 'Components/atoms/simple-block';
 
 class ProfilePage extends Component {
@@ -31,6 +32,7 @@ class ProfilePage extends Component {
             </Col>
           </Row>
         </MainContainer>
+        <FooterOrganism />
       </div>
     );
   }

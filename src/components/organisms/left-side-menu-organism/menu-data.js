@@ -7,7 +7,7 @@ import statisticIcon from 'Assets/img/statistic.svg';
 
 const menuData = [
   {
-    text: 'Моя команда',
+    text: 'Мои ученики',
     path: PUPILS,
     icon: pupilsIcon
   },

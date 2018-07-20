@@ -13,8 +13,8 @@
       "HOC/*":        ["./src/components/hoc/*"],
       "Templates/*":  ["./src/components/templates/*"],
       "Templates":    ["./src/components/templates/index.js"],
-      "Molecules/*":    ["./src/components/molecules/*"],
-      "Organisms/*":    ["./src/components/organisms/*"],
+      "Molecules/*":  ["./src/components/molecules/*"],
+      "Organisms/*":  ["./src/components/organisms/*"],
       "Selectors/*":  ["./src/selectors/*"],
       "Store/*":      ["./src/store/*"],
       "Constants/*":  ["./src/constants/*"],
@@ -23,6 +23,7 @@
       "Utils/*":      ["./src/utils/*"],
       "Layouts/*":    ["./src/layouts/*"],
       "Assets/*":     ["./src/assets/*"],
+      "Config/*":     ["./src/config/*"],
     },
   },
   "exclude": ["node_modules", "dist"]

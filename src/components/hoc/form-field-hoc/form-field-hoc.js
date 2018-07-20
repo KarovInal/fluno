@@ -7,13 +7,15 @@ const defaultSetting = {
   validate: defaultValidate
 };
 
-const FormFieldHOC = ({ validate = defaultValidate } = defaultSetting) => WrappedComponent => (rest) => {
+const FormFieldHOC = ({ validate = defaultValidate, type = 'text' } = defaultSetting) => WrappedComponent => props => {
   return (
     <Field
-      {...rest}
+      { ...props }
+      type={type}
+      validate={validate}
       component={WrappedComponent}
     />
-  );
+  )
 };
 
 export default FormFieldHOC;

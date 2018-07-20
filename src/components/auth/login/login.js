@@ -9,6 +9,7 @@ import PasswordField from 'Atoms/password-field';
 import { AuthLabel, SocialLoginIcon, SimpleLine, SimpleLink, LoignButton, SimpleLabel } from '../components';
 import { signIn } from 'Ducks/trainer';
 import { REGISTRATION } from 'Constants/routes';
+import { LOGIN } from 'Constants/form';
 
 import facebookIcon from 'Assets/img/facebook-icon.png';
 import googleIcon from 'Assets/img/google-icon.png';
@@ -33,7 +34,7 @@ const loginValidate = values => {
 };
 
 const stateToProps = state => ({
-  isInvalid: isInvalid('login')(state)
+  isInvalid: isInvalid(LOGIN)(state)
 });
 const dispatchToProps = dispatch => bindActionCreators({
   signIn
@@ -41,7 +42,7 @@ const dispatchToProps = dispatch => bindActionCreators({
 
 @connect(stateToProps, dispatchToProps)
 @reduxForm({
-  form: 'login',
+  form: LOGIN,
   validate: loginValidate
 })
 class Login extends Component {

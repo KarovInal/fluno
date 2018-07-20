@@ -9,6 +9,7 @@ import PasswordField from 'Atoms/password-field';
 import { AuthLabel, SimpleLink, LoignButton, SimpleLabel } from '../components';
 import { fetchRegistration } from 'Ducks/trainer';
 import { LOGIN } from 'Constants/routes';
+import { REGISTRATION } from 'Constants/form';
 
 const registerValidate = values => {
   let errors = {};
@@ -31,7 +32,7 @@ const registerValidate = values => {
 };
 
 const stateToProps = state => ({
-  isInvalid: isInvalid('registration')(state)
+  isInvalid: isInvalid(REGISTRATION)(state)
 });
 const dispatchToProps = dispatch => bindActionCreators({
   fetchRegistration
@@ -39,7 +40,7 @@ const dispatchToProps = dispatch => bindActionCreators({
 
 @connect(stateToProps, dispatchToProps)
 @reduxForm({
-  form: 'registration',
+  form: REGISTRATION,
   validate: registerValidate
 })
 class Registration extends Component {

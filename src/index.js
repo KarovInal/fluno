@@ -4,6 +4,7 @@ import App from './app';
 import store from 'Store';
 import { Provider } from 'react-redux';
 
+import 'Config/message';
 import 'antd/dist/antd.css';
 import './theme.less';
 

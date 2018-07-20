@@ -12,7 +12,7 @@ class HeaderOrganism extends Component {
     return (
       <HeaderTemplate>
         <MainContainer>
-          <Row type="flex" gutter={20}>
+          <Row type="flex" gutter={24}>
             <Col span={5}>
               <LogoHeader>FLUNO</LogoHeader>
             </Col>

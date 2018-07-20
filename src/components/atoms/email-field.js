@@ -11,11 +11,12 @@ const email = value =>
 @FormFieldHOC({ validate: email })
 class EmailField extends Component {
   render() {
-    const { input, meta, children, hasFeedback, label, ...rest } = this.props;
+    const { input, meta, children, hasFeedback, fieldTitle, ...rest } = this.props;
     const hasError = meta.touched && meta.invalid;
 
     return (
       <FormItem
+        fieldTitle={fieldTitle}
         validateStatus={hasError ? 'error' : 'success'}
         hasFeedback={hasFeedback && hasError}
         help={hasError && meta.error}

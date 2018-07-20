@@ -8,6 +8,7 @@ import HeaderOrganism from 'Organisms/header-organism';
 import LeftSideMenuOrganism from 'Organisms/left-side-menu-organism';
 import ProfileEdit from 'Organisms/profile-edit';
 import FooterOrganism from 'Organisms/footer-organism';
+import TopContent from 'Organisms/top-content';
 import SimpleBlock from 'Components/atoms/simple-block';
 
 class ProfilePage extends Component {
@@ -26,7 +27,8 @@ class ProfilePage extends Component {
               </SimpleBlock>
             </Col>
             <Col span={19}>
-              <SimpleBlock style={{ padding: '30px 48px 20px 48px' }}>
+              <SimpleBlock style={{ padding: '0 48px 20px 48px' }}>
+                <TopContent />
                 <ProfileEdit />
               </SimpleBlock>
             </Col>

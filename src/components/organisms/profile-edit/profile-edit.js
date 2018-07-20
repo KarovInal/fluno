@@ -37,7 +37,7 @@ class ProfileEdit extends Component {
     return (
       <div>
         <form onSubmit={ handleSubmit(this.fetchUserData) }>
-          <Row type="flex" gutter={24}>
+          <Row type="flex" gutter={24} style={{ marginBottom: '20px' }}>
             <Col span="5">
               <UploadFile
                 name="photo"

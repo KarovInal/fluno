@@ -16,7 +16,7 @@ class TextField extends Component {
         hasFeedback={hasFeedback && hasError}
         help={hasError && meta.error}
       >
-        <Input {...input} {...rest} children={children} />
+        <Input {...input} {...rest} children={children} style={{ marginBottom: '20px' }} />
       </FormItem>
     );
   }

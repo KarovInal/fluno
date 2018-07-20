@@ -5,7 +5,7 @@ import { map, get } from 'lodash';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router'
 import MenuItem from 'Atoms/menu-item';
-import menuData from './menu-data';
+import menuData from 'Constants/menu-data';
 
 @withRouter
 class LeftSideMenuOrganism extends Component {

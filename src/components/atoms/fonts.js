@@ -16,3 +16,12 @@ export const DescriptionText = styled.p`
   margin: 0px;
   padding: 0px;
 `;
+
+export const CaptionText = styled.h1`
+  color: #676B69;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0px;
+  padding: 0px;
+`;

@@ -4,14 +4,13 @@ import { Form } from 'antd';
 
 class FormItem extends Component {
   render() {
-    const { children, fieldTitle, ...props } = this.props;
+    const { children, fieldTitle, required, ...props } = this.props;
+
+    const requiredSimbol = required ? '*' : '';
 
     return (
-      <Form.Item
-        {...props}
-        style={{ margin: '0px' }}
-      >
-        { fieldTitle && <FiledTitle>{ fieldTitle }</FiledTitle> }
+      <Form.Item {...props} style={{ margin: '0px' }}>
+        { fieldTitle && <FiledTitle>{ `${fieldTitle} ${requiredSimbol}` }</FiledTitle> }
         { children }
       </Form.Item>
     );

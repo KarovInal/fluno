@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { map } from 'lodash';
 import { Col, Row } from 'antd';
 import { reduxForm, formValues } from 'redux-form';
 import { editProfile, FETCH_EDIT_PROFILE } from 'Ducks/trainer';
@@ -9,7 +8,7 @@ import { EDIT_PROFILE } from 'Constants/form';
 import UploadFile from 'Molecules/upload-photo';
 import TextField from 'Atoms/text-field';
 import SimpleLine from 'Atoms/simple-line';
-import { GreenButton } from 'Atoms/simple-button';
+import { GreenButton } from 'Atoms/buttons';
 import initialDataTrainer from 'Selectors/trainer/initial-data-trainer';
 
 const stateToProps = state => ({
@@ -91,9 +90,7 @@ class ProfileEdit extends Component {
           <Row type="flex" gutter={24} justify="end">
             <GreenButton
               loading={isUpdatingProfile}
-              style={{ float: 'right' }}
-              htmlType='submit'
-              type='primary'>
+              htmlType='submit'>
                 Сохранить
             </GreenButton>
           </Row>

@@ -5,37 +5,35 @@ import {
   BrowserRouter as Router,
   Switch
 } from 'react-router-dom';
-import { checkAuth, FETCH_AUTH } from 'Ducks/trainer';
+import { FETCH_AUTH } from 'Ducks/trainer';
+import { FETCH_DICTIONARY } from 'Ducks/dictionary';
 import { isLoading } from 'Ducks/loading';
 import ProtectedRoute from 'HOC/protected-route';
 import AuthPage from 'Pages/auth-page';
 import LoadingScreen from 'Components/loading-screen';
 import { Dashboard } from 'Templates';
 import ProfilePage from 'Pages/profile-page';
+import PupilsPage from 'Pages/pupils-page';
 import {
   LOGIN,
   EVENTS,
+  PUPILS,
   PROFILE,
-  REGISTRATION
+  REGISTRATION,
 } from 'Constants/routes';
 
 const stateToProps = state => ({
-  isFetchCheckAuth: isLoading(FETCH_AUTH)(state)
+  isFetchCheckAuth: isLoading(FETCH_AUTH)(state),
+  isFetchDictionary: isLoading(FETCH_DICTIONARY)(state)
 });
-const dispatchToProps = {
-  checkAuth
-};
+const dispatchToProps = {};
 
 @connect(stateToProps, dispatchToProps)
 class App extends Component {
-  componentDidMount() {
-    this.props.checkAuth();
-  };
-
   render() {
-    const { isFetchCheckAuth } = this.props;
+    const { isFetchCheckAuth, isFetchDictionary } = this.props;
 
-    if(isFetchCheckAuth) {
+    if(isFetchCheckAuth || isFetchDictionary) {
       return <LoadingScreen />;
     }
 
@@ -46,6 +44,7 @@ class App extends Component {
           <ProtectedRoute noAuth path={ REGISTRATION } component={ AuthPage } redirect={ PROFILE } />
           <ProtectedRoute path={ EVENTS } component={ Dashboard } redirect={ LOGIN } />
           <ProtectedRoute path={ PROFILE } component={ ProfilePage } redirect={ LOGIN } />
+          <ProtectedRoute path={ PUPILS } component={ PupilsPage } redirect={ LOGIN } />
           <Route component={() => '404'} />
         </Switch>
       </Router>

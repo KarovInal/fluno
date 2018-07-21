@@ -1,5 +1,5 @@
 import { message } from 'antd';
 
 message.config({
-  duration: 1
+  duration: 2
 });

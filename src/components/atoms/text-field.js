@@ -6,7 +6,8 @@ import FormFieldHOC from 'HOC/form-field-hoc';
 @FormFieldHOC()
 class TextField extends Component {
   render() {
-    const { input, meta, children, hasFeedback, fieldTitle, ...rest } = this.props;
+    const { input, meta, children, hasFeedback, fieldTitle, required = false, ...rest } = this.props;
+
     const hasError = meta.touched && meta.invalid;
 
     return (
@@ -15,8 +16,9 @@ class TextField extends Component {
         validateStatus={hasError ? 'error' : 'success'}
         hasFeedback={hasFeedback && hasError}
         help={hasError && meta.error}
+        required={required}
       >
-        <Input {...input} {...rest} children={children} style={{ marginBottom: '20px' }} />
+        <Input {...input} {...rest} children={children} style={{ marginBottom: '10px' }} />
       </FormItem>
     );
   }

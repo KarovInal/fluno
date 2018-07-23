@@ -15,6 +15,7 @@ import authBackgroundImg from 'Assets/img/auth-background.jpg';
 const AuthPageWrap = styled.div`
   height: 100%;
   background: url(${authBackgroundImg}) center center no-repeat scroll;
+  background-size: 100%;
 `;
 
 const LogoOnAuth = styled.p`

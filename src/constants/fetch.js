@@ -11,6 +11,9 @@ export const EDIT_PROFILE_PATH = `${HOST}/trainer/update`;
 
 // PUPIL PATH's
 export const CREATE_PUPIL_PATH = `${HOST}/pupils/create`;
+export const FETCH_SELF_PUPILS_PATH = `${HOST}/pupils/get-self-pupils`;
+export const FETCH_UPDATE_PUPIL_PATH = `${HOST}/pupils/update`;
+export const FETCH_DELETE_PUPIL_PATH = `${HOST}/pupils/delete`;
 
 // DICTIONARY PATH's
 export const DICTIONARY_PATH = `${HOST}/dictionary`;

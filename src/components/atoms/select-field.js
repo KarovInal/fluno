@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import FormFieldHOC from 'HOC/form-field-hoc';
 import FormItem from 'Atoms/form-item';
 import Selector from 'Atoms/selector';
-import { Select } from 'antd';
-
-const Option = Select.Option;
 
 @FormFieldHOC()
 class SelectField extends Component {

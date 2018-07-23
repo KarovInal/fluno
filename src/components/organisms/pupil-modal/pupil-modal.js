@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { reduxForm, formValues } from 'redux-form';
 import { createStructuredSelector } from 'reselect';
+import { get } from 'lodash';
 import { Modal, Col, Row } from 'antd';
-import { createPupil, FETCH_CREATE_PUPIL } from 'Ducks/pupils';
+import { createPupil, updatePupil, fetchSelfPupils, FETCH_CREATE_PUPIL } from 'Ducks/pupils';
 import { isLoading } from 'Ducks/loading';
 import SelectField from 'Atoms/select-field';
 import TextField from 'Atoms/text-field';
@@ -15,30 +16,53 @@ import { CaptionText } from 'Components/atoms/fonts';
 import ranksForSelector from 'Selectors/normalize/ranks-for-selector';
 import AVAILABLE_AGES_PUPIL from 'Constants/available-age-pupils';
 
+const initialValuesSelector = ( (state, ownProps) => get(ownProps, 'pupilData', {}) );
+
 const stateToProps = createStructuredSelector({
   ranksForSelector,
-  isLoading: isLoading(FETCH_CREATE_PUPIL)
+  isLoading: isLoading(FETCH_CREATE_PUPIL),
+  initialValues: initialValuesSelector,
 });
-const dispatchToProps = { createPupil };
 
-@reduxForm({ form: EDIT_PUPIL })
-@formValues('avatar')
+const dispatchToProps = {
+  createPupil,
+  updatePupil,
+  fetchSelfPupils,
+};
 @connect(stateToProps, dispatchToProps)
+@reduxForm({
+  form: EDIT_PUPIL,
+  enableReinitialize: true
+})
+@formValues('avatar')
 class PupilModal extends Component {
   static propTypes = {
+    isEdit: PropTypes.bool,
     isOpen: PropTypes.bool,
     pupilData: PropTypes.object,
   }
 
+  handleCreatePupil = values => this.props.createPupil(values);
+
+  handleEditPupil = values => this.props.updatePupil(values);
+
   handleSubmit = async values => {
-    await this.props.createPupil(values);
+    if(this.props.isEdit) {
+      await this.handleEditPupil({ ...values, pupilID: values.id });
+    } else {
+      await this.handleCreatePupil(values);
+    }
+
     this.props.onCancel();
     this.handleAfterClose();
   }
 
-  handleAfterClose = () => this.props.reset(EDIT_PUPIL);
+  handleAfterClose = () => {
+    this.props.fetchSelfPupils();
+    this.props.reset(EDIT_PUPIL);
+  }
 
-  renderTitle = () => <CaptionText>Добавление ученика</CaptionText>
+  renderTitle = () => <CaptionText>{ this.props.isEdit ? 'Изменение' : 'Добавление '} ученика</CaptionText>
 
   render() {
     return (
@@ -55,7 +79,13 @@ class PupilModal extends Component {
               <SelectField required name='rank' fieldTitle="Разряд ученика" placeholder="Разряд ученика" selectorValues={this.props.ranksForSelector} />
               <SelectField required name='yearOfBirth' fieldTitle="Дата рождения" placeholder="Дата рождения" selectorValues={AVAILABLE_AGES_PUPIL} />
               <Row type='flex' justify='end'>
-                <GreenButton loading={this.props.isLoading} disabled={this.props.invalid} htmlType='submit'>Создать</GreenButton>
+                <GreenButton loading={this.props.isLoading} disabled={this.props.invalid} htmlType='submit'>
+                  {
+                    this.props.isEdit
+                      ? 'Изменить'
+                      : 'Создать'
+                  }
+                </GreenButton>
               </Row>
             </Col>
           </Row>

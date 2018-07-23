@@ -12,4 +12,15 @@ const Avatar = styled.div`
   cursor: pointer;
 `;
 
+export const PupilAvatar = styled.div`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: black;
+  background-image: url(${ ({ img }) => img });
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  cursor: pointer;
+`;
+
 export default Avatar;

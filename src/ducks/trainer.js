@@ -1,4 +1,4 @@
-import { map } from 'lodash';
+import { map, omit, get } from 'lodash';
 import { message } from 'antd';
 import { loadingStart, loadingStop } from 'Ducks/loading';
 import {
@@ -103,7 +103,12 @@ export const editProfile = profileData => async dispatch => {
     dispatch(loadingStart(FETCH_EDIT_PROFILE));
 
     const formData = new FormData();
-    map(profileData, (value, key) => formData.append(key, value));
+
+    map(omit(profileData, 'photo'), (value, key) => formData.append(key, value));
+
+    if(get(profileData, 'photo')) {
+      formData.append('photo', get(profileData, 'photo'));
+    }
 
     await fetch(EDIT_PROFILE_PATH, createMultipleHeader(formData));
 

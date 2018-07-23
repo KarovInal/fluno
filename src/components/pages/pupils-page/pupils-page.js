@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import MainTemplate from 'Templates/main-template';
 import TopContent from 'Organisms/top-content';
 import AddPupil from 'Organisms/add-pupil';
+import DisplayPupilsList from 'Organisms/display-pupils-list';
 
 class PupilsPage extends Component {
   render() {
@@ -12,6 +13,7 @@ class PupilsPage extends Component {
             <TopContent>
               <AddPupil />
             </TopContent>
+            <DisplayPupilsList />
           </Fragment>
         }
       />

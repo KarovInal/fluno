@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import { isEmpty } from 'lodash';
+import { isEmpty, get } from 'lodash';
 
 const REQUIRED_MESSAGE = 'Обязательно к заполнению.';
 
@@ -8,17 +8,15 @@ const defaultValidate = () => {};
 
 const requiredValidation = value => isEmpty(value) ? REQUIRED_MESSAGE : undefined;
 
-const FormFieldHOC = ({validate = defaultValidate, type = 'text'} = {}) => WrappedComponent => ({required = false, ...props}) => {
-  const validationList = [validate];
-
-  if(required) validationList.push(requiredValidation);
+const FormFieldHOC = (options) => WrappedComponent => ({required = false, ...props}) => {
+  const validate = required ? [requiredValidation] : [];
 
   return (
     <Field
       { ...props }
+      { ...options }
+      validate={validate}
       required={required}
-      type={type}
-      validate={validationList}
       component={WrappedComponent}
     />
   )

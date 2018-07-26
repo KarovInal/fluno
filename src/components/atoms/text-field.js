@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { get } from 'lodash';
 import { Input } from 'antd';
 import FormItem from 'Atoms/form-item';
 import FormFieldHOC from 'HOC/form-field-hoc';
@@ -10,6 +11,12 @@ class TextField extends Component {
 
     const hasError = meta.touched && meta.invalid;
 
+    const style = {
+      marginBottom: '10px',
+      ...get(rest, 'style', {}),
+    }
+
+
     return (
       <FormItem
         fieldTitle={fieldTitle}
@@ -18,7 +25,7 @@ class TextField extends Component {
         help={hasError && meta.error}
         required={required}
       >
-        <Input {...input} {...rest} children={children} style={{ marginBottom: '10px' }} />
+        <Input {...input} {...rest} children={children} style={style} />
       </FormItem>
     );
   }

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { get } from 'lodash';
 import styled from 'styled-components';
 import { Upload, Icon, message } from 'antd';
 import FormFieldHOC from 'HOC/form-field-hoc';
+import { DescriptionText } from 'Atoms/fonts';
 
 const UploadButton = styled.div`
   width: 150px;
@@ -26,15 +27,6 @@ const UploadButton = styled.div`
 
 @FormFieldHOC({ type: 'file' })
 class UploadFile extends Component {
-  static propTypes = {
-    onPhotoChange: PropTypes.func,
-    previewImage: PropTypes.any
-  };
-
-  static defaultProps = {
-    onPhotoChange: () => {}
-  };
-
   get uploadProps() {
     return {
       action: '',
@@ -59,14 +51,15 @@ class UploadFile extends Component {
     }
     
     try {
-      this.props.onPhotoChange(file);
+      this.props.input.onChange(file);
     } catch(e) {
       rej(e);
     }
   })
 
   render() {
-    let { previewImage } = this.props;
+    let { input } = this.props;
+    let previewImage = get(input, 'value');
 
     if(typeof previewImage === 'object') {
       previewImage = URL.createObjectURL(previewImage);
@@ -79,10 +72,10 @@ class UploadFile extends Component {
             !previewImage && (
               <div>
                 <Icon type="upload" style={{ fontSize: '20px' }} />
-                <p>
+                <DescriptionText>
                   Загрузите файл
                   (.jpeg, .jpg)
-                </p>
+                </DescriptionText>
               </div>
             )
           }

@@ -48,6 +48,11 @@ export const pathData = {
     "text": "Статистика",
     "path": "/statistics",
     "icon": "/statistic.47e34997.svg"
+  },
+  "/create-competition": {
+    "text": "Создание соревнования",
+    "path": "/create-competition",
+    "icon": ""
   }
 }
 

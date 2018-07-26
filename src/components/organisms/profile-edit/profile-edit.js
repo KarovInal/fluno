@@ -24,25 +24,20 @@ const dispatchToProps = {
 
 @connect(stateToProps, dispatchToProps)
 @reduxForm({ form: EDIT_PROFILE })
-@formValues('photo')
 class ProfileEdit extends Component {
   fetchUserData = values => {
     this.props.editProfile(values)
   };
 
   render() {
-    const { change, handleSubmit, photo = '', isUpdatingProfile } = this.props;
+    const { handleSubmit, isUpdatingProfile } = this.props;
 
     return (
       <div>
         <form onSubmit={ handleSubmit(this.fetchUserData) }>
           <Row type="flex" gutter={24} style={{ marginBottom: '20px' }}>
             <Col span="5">
-              <UploadFile
-                name="photo"
-                previewImage={photo}
-                onPhotoChange={file => change('photo', file)}
-              />
+              <UploadFile name="photo" />
             </Col>
             <Col span="19">
               <Row type="flex" gutter={24}>

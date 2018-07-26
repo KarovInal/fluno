@@ -34,7 +34,6 @@ const dispatchToProps = {
   form: EDIT_PUPIL,
   enableReinitialize: true
 })
-@formValues('avatar')
 class PupilModal extends Component {
   static propTypes = {
     isEdit: PropTypes.bool,
@@ -70,7 +69,7 @@ class PupilModal extends Component {
         <form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
           <Row type='flex'>
             <Col span={8}>
-              <UploadPhoto name='avatar' previewImage={this.props.avatar} onPhotoChange={file => this.props.change('avatar', file)} />
+              <UploadPhoto name='avatar' />
             </Col>
             <Col span={16}>
               <TextField required name='lastName' placeholder="Фамилия" fieldTitle="Фамилия" />

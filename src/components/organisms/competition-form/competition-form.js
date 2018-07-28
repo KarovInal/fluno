@@ -4,7 +4,8 @@ import SimpleBlock from 'Atoms/simple-block';
 import SectionTitle from 'Atoms/section-title';
 import CompetitionFormDescription from 'Molecules/competition-form-description';
 import CompetitionTimeline from 'Molecules/competition-timeline';
-import ProgramCompetition from 'Molecules/program-competition';
+import ProgramCompetition from 'Organisms/program-competition';
+import ContactsCompetition from 'Organisms/contacts-competition';
 import { CREATE_COMPETITION } from 'Constants/form';
 import { GROUP_PROGRAM, INDIVIDUAL_PROGRAM } from 'Constants/program';
 
@@ -38,13 +39,18 @@ const groupInitialValues = {
   }
 }
 
+const contactsInitialValues = {
+  contacts: [{}]
+}
+
 @reduxForm({
   form: CREATE_COMPETITION,
   enableReinitialize: true,
   keepDirtyOnReinitialize: true,
   initialValues: {
     ...groupInitialValues,
-    ...individualInitialValues
+    ...individualInitialValues,
+    ...contactsInitialValues
   }
 })
 class CompetitionForm extends Component {
@@ -57,6 +63,7 @@ class CompetitionForm extends Component {
           <SectionTitle style={{ marginTop: '30px' }} title='Программа соревнований' description='Здесь организатор описывает возраста, разряды и виды.' />
           <ProgramCompetition type={INDIVIDUAL_PROGRAM} {...this.props} />
           <ProgramCompetition type={GROUP_PROGRAM} {...this.props} />
+          <ContactsCompetition {...this.props} />
         </SimpleBlock>
       </form>
     )

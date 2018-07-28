@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { FieldArray } from 'redux-form';
-import { map, get, isEmpty } from 'lodash';
+import { get } from 'lodash';
 import moment from 'moment';
 import { Icon, Timeline } from 'antd';
 import SectionTitle from 'Atoms/section-title';

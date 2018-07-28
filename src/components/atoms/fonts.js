@@ -7,7 +7,8 @@ export const RegularText = styled.p`
   color: ${props => props.light ? 'rgba(103, 107, 105, 0.5)' : '#676B69'};
   margin: ${props => props.margin || '0px'};
   padding: 0px;
-  display: ${props => props.inline ? 'inline' : 'block'}
+  display: ${props => props.inline ? 'inline' : 'block'};
+  cursor: ${props => props.pointer ? 'pointer' : 'auto' }
 `;
 
 export const DescriptionText = styled.p`

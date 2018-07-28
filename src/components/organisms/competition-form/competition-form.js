@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import SimpleBlock from 'Atoms/simple-block';
 import SectionTitle from 'Atoms/section-title';
+import SimpleLine from 'Atoms/simple-line';
 import CompetitionFormDescription from 'Molecules/competition-form-description';
 import CompetitionTimeline from 'Molecules/competition-timeline';
 import ProgramCompetition from 'Organisms/program-competition';
 import ContactsCompetition from 'Organisms/contacts-competition';
+import ContributionCompetition from 'Organisms/contribution-competition';
 import { CREATE_COMPETITION } from 'Constants/form';
 import { GROUP_PROGRAM, INDIVIDUAL_PROGRAM } from 'Constants/program';
 
@@ -40,7 +42,7 @@ const groupInitialValues = {
 }
 
 const contactsInitialValues = {
-  contacts: [{}]
+  contactsCompetition: [{}]
 }
 
 @reduxForm({
@@ -50,7 +52,9 @@ const contactsInitialValues = {
   initialValues: {
     ...groupInitialValues,
     ...individualInitialValues,
-    ...contactsInitialValues
+    ...contactsInitialValues,
+    financingIndividual: 0,
+    financingGroup: 0,
   }
 })
 class CompetitionForm extends Component {
@@ -64,6 +68,8 @@ class CompetitionForm extends Component {
           <ProgramCompetition type={INDIVIDUAL_PROGRAM} {...this.props} />
           <ProgramCompetition type={GROUP_PROGRAM} {...this.props} />
           <ContactsCompetition {...this.props} />
+          <ContributionCompetition { ...this.props } />
+          <SimpleLine />
         </SimpleBlock>
       </form>
     )

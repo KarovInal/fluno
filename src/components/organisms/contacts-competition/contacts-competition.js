@@ -14,8 +14,8 @@ class ContactsCompetition extends Component {
         {
           fields.map((fieldName, index) => {
             return (
-              <SimpleEditableBlock onRemove={() => fields.remove(index)} style={{ marginBottom: '10px' }}>
-                <Row type='flex' key={index} gutter={24}>
+              <SimpleEditableBlock key={index} onRemove={() => fields.remove(index)} style={{ marginBottom: '10px' }}>
+                <Row type='flex' gutter={24}>
                   <Col span='12'>
                     <TextField name={`${fieldName}.fio`} fieldTitle='ФИО' placeholder='ФИО' />
                     <TextField name={`${fieldName}.phone`} fieldTitle='Телефон' placeholder='+7(___) ___-__-__' />
@@ -38,7 +38,7 @@ class ContactsCompetition extends Component {
     return (
       <Fragment>
         <SectionTitle style={{ marginTop: '30px' }} title='Контакты' />
-        <FieldArray name='contacts' component={this.renderContacts} />
+        <FieldArray name='contactsCompetition' component={this.renderContacts} />
       </Fragment>
     );
   }

@@ -2,9 +2,9 @@ import React from 'react';
 import SimpleLine from 'Atoms/simple-line';
 import { BoldText, RegularText } from 'Atoms/fonts';
 
-const SectionTitle = ({ title, description }) => {
+const SectionTitle = ({ title, description, style = {} }) => {
   return (
-    <div>
+    <div style={style}>
       <BoldText>{title}</BoldText>
       {
         description && (

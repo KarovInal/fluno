@@ -37,4 +37,35 @@
     content: '';
     display: none;
   }
+
+  .program-wrap .ant-select-selection {
+    border: none
+  }
+
+  .program-wrap .ant-select-selection--multiple {
+    cursor: pointer;
+  }
+
+  .program-wrap .ant-select-selection__choice {
+    padding: 0 5px;
+    border: none;
+  }
+
+  .program-wrap .ant-select-selection__choice__remove {
+    display: none;
+  }
+
+  .program-wrap .ant-select-selection--multiple:before {
+    content: '\E61D';
+    display: block;
+    font-family: "anticon" !important;
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    right: 11px;
+    line-height: 1;
+    margin-top: -6px;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+  }
 }

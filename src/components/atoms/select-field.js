@@ -6,7 +6,7 @@ import Selector from 'Atoms/selector';
 @FormFieldHOC()
 class SelectField extends Component {
   render() {
-    const { input, meta, children, hasFeedback, fieldTitle, ...rest } = this.props;
+    const { input, meta, children, hasFeedback, fieldTitle, style = {}, ...rest } = this.props;
     const hasError = meta.touched && meta.invalid;
 
     return (
@@ -16,7 +16,7 @@ class SelectField extends Component {
         hasFeedback={hasFeedback && hasError}
         help={hasError && meta.error}
       >
-        <Selector {...input} {...rest} style={{ marginBottom: '10px' }} />
+        <Selector {...input} {...rest} style={{ marginBottom: '10px', ...style }} />
       </FormItem>
     )
   }

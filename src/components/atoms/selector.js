@@ -15,7 +15,7 @@ class Selector extends Component {
   }
 
   render() {
-    let { selectorValues, value, ...props } = this.props;
+    let { selectorValues, value, customLabel, ...props } = this.props;
     value = isEmpty(value)
       ? this.props.defaultValue
       : value;
@@ -25,7 +25,11 @@ class Selector extends Component {
         {
           map(selectorValues, selectorValue => (
             <Option value={selectorValue.value} key={selectorValue.value}>
-              {selectorValue.text}
+              {
+                customLabel
+                  ? customLabel(selectorValue)
+                  : selectorValue.text
+              }
             </Option>
           ))
         }

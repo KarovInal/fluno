@@ -6,7 +6,9 @@ const configSize = {
   sm: '15px',
   md: '30px',
   lg: '45px',
-  bg: '50px' 
+  bg: '50px',
+  kindHeight: '20px',
+  kindWidth: 'auto',
 };
 
 const Icon = styled.div`
@@ -18,3 +20,8 @@ const Icon = styled.div`
 `;
 
 export default Icon;
+
+export const KindIcon = styled.img`
+  width: ${ ({ size }) => get(configSize, size, configSize.kindWidth) };
+  height: ${ ({ size }) => get(configSize, size, configSize.kindHeight) };
+`;

@@ -104,7 +104,7 @@ class CompetitionTimeline extends Component {
   render() {
     return (
       <Fragment>
-        <SectionTitle title='Программа соревнований' description='Здесь вы можете описать подробно даты и время планируемых событий.' />
+        <SectionTitle title='Расписание соревнований' description='Информация о начале соревнований и конце, а также о событиях которые будут происходить в эти даты и часы.' />
         <FieldArray name="timelines" component={this.renderTimeline} />
         <TimelineEdit
           onCloseTimeline={this.onCloseTimeline}

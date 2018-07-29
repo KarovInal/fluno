@@ -17,7 +17,7 @@ class PupilsPage extends Component {
           </Fragment>
         }
       />
-    )
+    );
   }
 }
 

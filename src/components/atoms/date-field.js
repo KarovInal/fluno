@@ -22,7 +22,7 @@ class TextField extends Component {
       marginBottom: '10px',
       width: '100%',
       ...get(rest, 'style', {}),
-    }
+    };
 
     return (
       <FormItem
@@ -35,6 +35,8 @@ class TextField extends Component {
         <DatePicker
           {...input}
           {...rest}
+          value={input.value ? moment(input.value) : null}
+          onChange={value => input.onChange(moment(value).format())}
           style={style}
           children={children}
         />

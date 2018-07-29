@@ -1,6 +1,6 @@
 import { map, omit, get } from 'lodash';
 import { message } from 'antd';
-import { loadingStart, loadingStop } from 'Ducks/loading';
+import { loadingStart, loadingStop } from './loading';
 import {
   AUTH_PATH,
   SIGN_IN_PATH,

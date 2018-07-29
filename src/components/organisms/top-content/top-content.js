@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { withRouter } from 'react-router'
+import { withRouter } from 'react-router';
 import { get } from 'lodash';
 import { pathData } from 'Constants/menu-data';
 import { Icon, Row, Col } from 'antd';
@@ -18,7 +17,7 @@ class TopContent extends Component {
 
   static defaultProps = {
     showBackButton: true
-  }
+  };
 
   renderBackButton = () => {
     return (
@@ -27,8 +26,8 @@ class TopContent extends Component {
         onClick={ this.props.history.goBack }
         style={{ fontWeight: 'bolder', color: '#676B69', cursor: 'pointer', marginRight: '12px' }}
       />
-    )
-  }
+    );
+  };
 
   getPageTitle = () => {
     if(this.props.title) {
@@ -36,17 +35,29 @@ class TopContent extends Component {
     }
 
     return get(pathData, [this.props.match.path, 'text'], 'FLUNO');
-  }
+  };
+
+  renderLeftContent = () => {
+    return (
+      this.props.leftContent
+        ? this.props.leftContent
+        : (
+          <Fragment>
+            { this.props.showBackButton && this.renderBackButton() }
+            <CaptionText style={{ display: 'inline-block' }}>
+              { this.getPageTitle() }
+            </CaptionText>
+          </Fragment>
+        )
+    );
+  };
 
   render() {
     return (
       <SimpleEmptyBlock height='60px' style={{ marginBottom: '30px' }}>
         <Row type='flex' align='middle' style={{ height: '100%' }}>
           <Col span={12}>
-            { this.props.showBackButton && this.renderBackButton() }
-            <CaptionText style={{ display: 'inline-block' }}>
-              { this.getPageTitle() }
-            </CaptionText>
+            { this.renderLeftContent() }
           </Col>
           <Col span={12}>
             <Row type='flex' align='middle' justify='end' style={{ height: '100%' }}>
@@ -56,7 +67,7 @@ class TopContent extends Component {
         </Row>
         <SimpleLine />
       </SimpleEmptyBlock>
-    )
+    );
   }
 }
 

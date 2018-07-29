@@ -4,6 +4,7 @@ import trainer from 'Ducks/trainer';
 import loading from 'Ducks/loading';
 import dictionary from 'Ducks/dictionary';
 import pupils from 'Ducks/pupils';
+import competitions from 'Ducks/competition';
 
 export default combineReducers({
   form: formReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
   loading,
   trainer,
   dictionary,
+  competitions
 });

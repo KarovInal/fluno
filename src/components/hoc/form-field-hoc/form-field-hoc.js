@@ -1,10 +1,8 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import { isEmpty, get } from 'lodash';
+import { isEmpty } from 'lodash';
 
 const REQUIRED_MESSAGE = 'Обязательно к заполнению.';
-
-const defaultValidate = () => {};
 
 const requiredValidation = value => isEmpty(value) ? REQUIRED_MESSAGE : undefined;
 

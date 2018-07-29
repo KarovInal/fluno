@@ -20,6 +20,7 @@ export const DICTIONARY_PATH = `${HOST}/dictionary`;
 
 // COMPETITION PATH's
 export const CREATE_COMPETITION_PATH = `${HOST}/competition/create`;
+export const GET_COMPETITIONS_PATH = `${HOST}/competitions`;
 
 export const createPostHeader = (body = {}) => ({
   method: 'POST',

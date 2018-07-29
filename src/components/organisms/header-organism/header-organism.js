@@ -7,7 +7,7 @@ import { LogoHeader } from 'Atoms/logo';
 import { PurpleButton } from 'Atoms/buttons';
 import Search from 'Templates/search';
 import Badge from 'Templates/badge';
-import { CREATE_COMPETITION } from 'Constants/routes';
+import { COMPETITION_CREATE } from 'Constants/routes';
 
 class HeaderOrganism extends Component {
   render() {
@@ -25,7 +25,7 @@ class HeaderOrganism extends Component {
               <Badge count={5} />
             </Col>
             <Col span={4} style={{ textAlign: 'right' }}>
-              <Link to={CREATE_COMPETITION}>
+              <Link to={COMPETITION_CREATE}>
                 <PurpleButton>Добавить соревнование</PurpleButton>
               </Link>
             </Col>

@@ -15,12 +15,15 @@ import { Dashboard } from 'Templates';
 import ProfilePage from 'Pages/profile-page';
 import PupilsPage from 'Pages/pupils-page';
 import CreateCompetitionPage from 'Pages/create-competition-page';
+import NotFoundPage from 'Pages/not-found-page';
 import Competitions from 'Pages/competitions';
+import StatisticsPage from 'Pages/statistics-page';
 import {
   LOGIN,
   EVENTS,
   PUPILS,
   PROFILE,
+  STATISTICS,
   REGISTRATION,
   COMPETITIONS,
   COMPETITIONS_MY,
@@ -53,7 +56,8 @@ class App extends Component {
           <ProtectedRoute path={ PUPILS } component={ PupilsPage } redirect={ LOGIN } />
           <ProtectedRoute path={ COMPETITION_CREATE } component={ CreateCompetitionPage } redirect={ LOGIN } />
           <ProtectedRoute path={ COMPETITIONS } component={ Competitions } redirect={ LOGIN } />
-          <Route component={() => '404'} />
+          <ProtectedRoute path={ STATISTICS } component={ StatisticsPage } redirect={ LOGIN } />
+          <Route component={ NotFoundPage } />
         </Switch>
       </Router>
     );

@@ -34,7 +34,7 @@ class TopContent extends Component {
       return this.props.title;
     }
 
-    return get(pathData, [this.props.match.path, 'text'], 'FLUNO');
+    return get(pathData, [this.props.match.path, 'text'], 'Страницы не существует');
   };
 
   renderLeftContent = () => {

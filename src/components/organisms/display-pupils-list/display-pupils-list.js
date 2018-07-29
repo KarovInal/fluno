@@ -7,6 +7,7 @@ import { isLoading } from 'Ducks/loading';
 import PupilModal from 'Organisms/pupil-modal';
 import PupilInlineCard from 'Molecules/pupil-inline-card';
 import LoadingScreen from 'Components/loading-screen';
+import EmptyPupilsBlock from 'Atoms/empty-pupils-block';
 import pupilsSelector from 'Selectors/pupils/pupils-selector';
 import pupilsForList from 'Selectors/normalize/pupils-for-list';
 
@@ -64,7 +65,7 @@ class DisplayPupilsList extends Component {
     }
 
     if(isEmpty(this.props.pupilsList)) {
-      return <h1>Список учеников пуст =(</h1>
+      return <EmptyPupilsBlock />
     }
 
     return (

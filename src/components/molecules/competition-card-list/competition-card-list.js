@@ -25,10 +25,10 @@ class CompetitionCardList extends Component {
   render() {
     return (
       <Row type='flex'>
-        <Col span={5}>
+        <Col span={7}>
           <CoverCompetitionCardList cover={this.props.coverCompetition}/>
         </Col>
-        <Col span={19}>
+        <Col span={17}>
           <BoldText style={{ marginBottom: '10px' }}>
             <Clock isAvailableDate={this.props.isAvailableDate} style={{ marginRight: '10px' }}/>
             { this.props.nameCompetition }

@@ -3,6 +3,7 @@ import MainTemplate from 'Templates/main-template';
 import TopContent from 'Organisms/top-content';
 import AddPupil from 'Organisms/add-pupil';
 import DisplayPupilsList from 'Organisms/display-pupils-list';
+import ComingSoon from 'Molecules/coming-soon';
 
 class PupilsPage extends Component {
   render() {
@@ -15,6 +16,9 @@ class PupilsPage extends Component {
             </TopContent>
             <DisplayPupilsList />
           </Fragment>
+        }
+        rightContent={
+          <ComingSoon title='Фильтры поиска для учеников.' style={{ height: '200px' }} />
         }
       />
     );

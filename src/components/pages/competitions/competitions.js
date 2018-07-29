@@ -3,6 +3,7 @@ import MainTemplate from 'Templates/main-template';
 import TopContent from 'Organisms/top-content';
 import CompetitionsList from 'Organisms/competitions-list';
 import { RegularText } from 'Atoms/fonts';
+import ComingSoon from 'Molecules/coming-soon';
 
 class Competitions extends Component {
   renderOrderCompetitions = () => (
@@ -19,6 +20,9 @@ class Competitions extends Component {
             <TopContent leftContent={this.renderOrderCompetitions()} />
             <CompetitionsList />
           </Fragment>
+        }
+        rightContent={
+          <ComingSoon title='Фильтры поиска для соревнований.' style={{ height: '200px' }} />
         }
       />
     );

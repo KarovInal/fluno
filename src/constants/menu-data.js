@@ -1,4 +1,10 @@
-import { PUPILS, COMPETITIONS, PROFILE, STATISTICS } from 'Constants/routes';
+import {
+  PUPILS,
+  PROFILE,
+  STATISTICS,
+  COMPETITIONS,
+  COMPETITION_CREATE,
+} from 'Constants/routes';
 
 import pupilsIcon from 'Assets/img/pupils.svg';
 import competitionIcon from 'Assets/img/competition.svg';
@@ -29,29 +35,29 @@ const menuData = [
 ];
 
 export const pathData = {
-  "/pupils": {
+  [PUPILS]: {
     "text": "Мои ученики",
-    "path": "/pupils",
+    "path": PUPILS,
     "icon": "/pupils.e1cb9718.svg"
   },
-  "/competitions": {
+  [COMPETITIONS]: {
     "text": "Соревнования",
-    "path": "/competitions",
+    "path": COMPETITIONS,
     "icon": "/competition.8a601934.svg"
   },
-  "/profile": {
+  [PROFILE]: {
     "text": "Профиль",
-    "path": "/profile",
+    "path": PROFILE,
     "icon": "/setting.a719c2c5.svg"
   },
-  "/statistics": {
+  [STATISTICS]: {
     "text": "Статистика",
-    "path": "/statistics",
+    "path": STATISTICS,
     "icon": "/statistic.47e34997.svg"
   },
-  "/create-competition": {
+  [COMPETITION_CREATE]: {
     "text": "Создание соревнования",
-    "path": "/create-competition",
+    "path": COMPETITION_CREATE,
     "icon": ""
   }
 }

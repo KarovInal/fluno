@@ -21,7 +21,7 @@ const individualInitialValues = {
   [INDIVIDUAL_PROGRAM]: {
     rowCount: 1,
     columnCount: 4,
-    programData: [ [ '2012', 'МС', ['1', '2'], null ] ]
+    programData: [ [ null, null, null, null ] ]
   }
 };
 
@@ -29,20 +29,13 @@ const groupInitialValues = {
   [GROUP_PROGRAM]: {
     rowCount: 1,
     columnCount: 4,
-    programData: [ [ '2012', 'МС', ['1', '2'], null ] ]
+    programData: [ [ null, null, null, null ] ]
   }
-}
+};
 
 const contactsInitialValues = {
-  contactsCompetition: [
-    {
-      fio: 'Petrova',
-      phone: '228',
-      position: 'wad',
-      email: 'awdawd'
-    }
-  ]
-}
+  contactsCompetition: [{}]
+};
 
 const stateToProps = createStructuredSelector({
   isLoading: isLoading(FETCH_CREATE_COMPETITION)
@@ -56,48 +49,23 @@ const dispatchToProps = { fetchCreateCompetition };
   initialValues: {
     ...groupInitialValues,
     ...individualInitialValues,
-    ...contactsInitialValues,
-    financingIndividual: 0,
-    financingGroup: 0,
-    nameCompetition: 'Olimpic games',
-    dateStartCompetition: '2018-07-24T21:00:00.000Z',
-    deadlineCompetition: '2018-07-24T21:00:00.000Z',
-    addressCompetition: 'Profsouz',
-    countryCompetition: 'Russia',
-    cityCompetition: 'Moscow',
-    timelinesCompetition: [
-      {
-        times: [
-          {
-            time: '2018-07-03T15:30:36.487Z',
-            text: '21e12e'
-          },
-          {
-            time: 'awdawd',
-            text: 'awdaw'
-          },
-          {
-            time: 'dawd',
-            text: 'awdawd'
-          }
-        ]
-      }
-    ]
+    ...contactsInitialValues
   }
 })
 @connect(stateToProps, dispatchToProps)
 class CompetitionForm extends Component {
   handleSubmit = values => {
-    console.log(values);
     this.props.fetchCreateCompetition(values);
   };
 
   render() {
+    const { invalid = false } = this.props;
+
     return (
       <form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
         <SimpleBlock style={{ padding: '30px 47px' }}>
           <CompetitionFormDescription />
-          <CompetitionTimeline style={{ marginBottom: '40px' }} />
+          <CompetitionTimeline required style={{ marginBottom: '40px' }} />
           <SectionTitle style={{ marginTop: '30px' }} title='Программа соревнований' description='Здесь организатор описывает возраста, разряды и виды.' />
           <ProgramCompetition type={INDIVIDUAL_PROGRAM} {...this.props} />
           <ProgramCompetition type={GROUP_PROGRAM} {...this.props} />
@@ -105,11 +73,11 @@ class CompetitionForm extends Component {
           <ContributionCompetition { ...this.props } />
           <SimpleLine style={{ marginBottom: '30px' }}/>
           <Row type='flex' justify='end'>
-            <PurpleButton loading={this.props.isLoading} htmlType='submit'>Создать</PurpleButton>
+            <PurpleButton disabled={invalid} loading={this.props.isLoading} htmlType='submit'>Создать</PurpleButton>
           </Row>
         </SimpleBlock>
       </form>
-    )
+    );
   }
 }
 

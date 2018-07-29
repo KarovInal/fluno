@@ -66,7 +66,7 @@ class TimelineEdit extends Component {
                   }
                 </Col>
               </Row>
-            )
+            );
           })
         }
         <RegularText style={{ cursor: 'pointer' }} onClick={() => fields.push({})}>

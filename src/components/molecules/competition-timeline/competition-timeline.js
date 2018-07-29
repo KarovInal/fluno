@@ -27,7 +27,7 @@ class CompetitionTimeline extends Component {
 
   editTimeline = fieldIndex => {
     this.setState({ isOpenTimelineEdit: true, currentEditTimeline: fieldIndex });
-  }
+  };
 
   onCloseTimeline = () => {
     this.setState({ isOpenTimelineEdit: false, currentEditTimeline: '' });

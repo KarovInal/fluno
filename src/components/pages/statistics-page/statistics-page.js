@@ -16,6 +16,6 @@ class NotFoundPage extends Component {
       />
     );
   }
-};
+}
 
 export default NotFoundPage;

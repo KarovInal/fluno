@@ -19,6 +19,7 @@ import NotFoundPage from 'Pages/not-found-page';
 import Competitions from 'Pages/competitions';
 import StatisticsPage from 'Pages/statistics-page';
 import {
+  ROOT,
   LOGIN,
   EVENTS,
   PUPILS,
@@ -57,6 +58,7 @@ class App extends Component {
           <ProtectedRoute path={ COMPETITION_CREATE } component={ CreateCompetitionPage } redirect={ LOGIN } />
           <ProtectedRoute path={ COMPETITIONS } component={ Competitions } redirect={ LOGIN } />
           <ProtectedRoute path={ STATISTICS } component={ StatisticsPage } redirect={ LOGIN } />
+          <ProtectedRoute path={ ROOT } component={ ProfilePage } redirect={ LOGIN } />
           <Route component={ NotFoundPage } />
         </Switch>
       </Router>

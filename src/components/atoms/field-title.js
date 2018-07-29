@@ -7,6 +7,7 @@ const FieldTitle = styled.p`
   margin: 0px;
   padding: 0px;
   line-height: 20px;
+  margin-bottom: 5px;
 `;
 
 export default FieldTitle;

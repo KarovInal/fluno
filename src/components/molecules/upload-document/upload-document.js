@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { get, includes } from 'lodash';
 import { Upload, Icon, message } from 'antd';
 import FormFieldHOC from 'HOC/form-field-hoc';
+import FieldTitle from 'Atoms/field-title';
 import { RegularText } from 'Atoms/fonts';
 
 const UploadButton = styled.div`
@@ -60,23 +61,26 @@ class UploadDocument extends Component {
   })
 
   render() {
-    let { input } = this.props;
+    let { input, fieldTitle, style } = this.props;
 
     const fileName = get(input, 'value.name');
 
     return (
-      <Upload {...this.uploadProps}>
-        <UploadButton>
-          <RegularText>
-            <Icon type="upload" style={{ fontSize: '20px', margin: '0 10px' }} />
-            {
-              fileName
-                ? `Готово - ${fileName}`
-                : 'Загрузите файл (.doc, .pdf)'
-            }
-          </RegularText>
-        </UploadButton>
-      </Upload>
+      <div style={style}>
+        <Upload {...this.uploadProps}>
+          { fieldTitle && <FieldTitle>{ fieldTitle }</FieldTitle> }
+          <UploadButton>
+            <RegularText>
+              <Icon type={ fileName ? 'smile-o' : 'upload' } style={{ fontSize: '20px', margin: '0 10px' }} />
+              {
+                fileName
+                  ? `Готово - ${fileName}`
+                  : 'Загрузите файл (.doc, .pdf)'
+              }
+            </RegularText>
+          </UploadButton>
+        </Upload>
+      </div>
     );
   }
 }

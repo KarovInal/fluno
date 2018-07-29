@@ -4,15 +4,18 @@ import { Button } from 'antd';
 const styles = {
   greenButton: {
     backgroundColor: '#31C679',
-    border: 'none'
+    border: 'none',
+    lineHeight: 'initial'
   },
   purpleButton: {
     backgroundColor: '#9652CE',
-    border: 'none'
+    border: 'none',
+    lineHeight: 'initial'
   },
   redButton: {
     backgroundColor: '#FF1649',
-    border: 'none'
+    border: 'none',
+    lineHeight: 'initial'
   }
 }
 

@@ -3,6 +3,7 @@ import { get } from 'lodash';
 import styled from 'styled-components';
 import { Upload, Icon, message } from 'antd';
 import FormFieldHOC from 'HOC/form-field-hoc';
+import FieldTitle from 'Atoms/field-title';
 import { DescriptionText } from 'Atoms/fonts';
 
 const UploadButton = styled.div`
@@ -58,7 +59,7 @@ class UploadFile extends Component {
   })
 
   render() {
-    let { input } = this.props;
+    let { input, fieldTitle, style = {} } = this.props;
     let previewImage = get(input, 'value');
 
     if(typeof previewImage === 'object') {
@@ -66,21 +67,24 @@ class UploadFile extends Component {
     }
 
     return (
-      <Upload {...this.uploadProps}>
-        <UploadButton previewImage={ previewImage }>
-          {
-            !previewImage && (
-              <div>
-                <Icon type="upload" style={{ fontSize: '20px' }} />
-                <DescriptionText>
-                  Загрузите файл
-                  (.jpeg, .jpg)
+      <div style={style}>
+        <Upload {...this.uploadProps}>
+          {fieldTitle && <FieldTitle>{fieldTitle}</FieldTitle>}
+          <UploadButton previewImage={previewImage}>
+            {
+              !previewImage && (
+                <div>
+                  <Icon type="upload" style={{ fontSize: '20px' }} />
+                  <DescriptionText>
+                    Загрузите файл
+                    (.jpeg, .jpg)
                 </DescriptionText>
-              </div>
-            )
-          }
-        </UploadButton>
-      </Upload>
+                </div>
+              )
+            }
+          </UploadButton>
+        </Upload>
+      </div>
     );
   }
 }

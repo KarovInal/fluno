@@ -20,6 +20,7 @@ class TextField extends Component {
 
     const style = {
       marginBottom: '10px',
+      width: '100%',
       ...get(rest, 'style', {}),
     }
 

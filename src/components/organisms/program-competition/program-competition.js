@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { times, get } from 'lodash';
 import styled from 'styled-components';
 import { Row, Col, Icon, Button } from 'antd';
-import { FieldArray, formValues } from 'redux-form';
+import { FieldArray } from 'redux-form';
 import { KindIcon } from 'Atoms/icon';
 import SelectField from 'Atoms/select-field';
 import { GreenButton, RedButton } from 'Atoms/buttons';
@@ -50,8 +50,8 @@ class ProgramCompetition extends Component {
   ];
 
   renderTypeProgram = () => {
-    if(this.props.type === GROUP_PROGRAM) return <RegularText light>Групповая программа</RegularText>;
-    if(this.props.type === INDIVIDUAL_PROGRAM) return <RegularText light>Индивидуальная программа</RegularText>;
+    if(this.props.type === GROUP_PROGRAM) return <RegularText style={{ marginBottom: '20px' }} light>Групповая программа</RegularText>;
+    if(this.props.type === INDIVIDUAL_PROGRAM) return <RegularText style={{ marginBottom: '20px' }} light>Индивидуальная программа</RegularText>;
     return  '';
   };
 
@@ -80,26 +80,26 @@ class ProgramCompetition extends Component {
   };
 
   renderControls = () => (
-    <Fragment>
-      <ButtonGroup>
-        Группы:
-        <GreenButton onClick={() => this.props.addColumn()}>
+    <div style={{ marginBottom: '10px' }}>
+      <ButtonGroup style={{ marginRight: '10px' }}>
+        {`Группы: `}
+        <GreenButton size='small' onClick={() => this.props.addColumn()}>
           <Icon type='plus' />
         </GreenButton>
-        <RedButton onClick={() => this.props.removeColumn()}>
+        <RedButton size='small' onClick={() => this.props.removeColumn()}>
           <Icon type='minus' />
         </RedButton>
       </ButtonGroup>
-      <ButtonGroup>
-        Строки:
-        <GreenButton onClick={() => this.props.addRow()}>
+      <ButtonGroup style={{ marginRight: '10px' }}>
+        {`Строки: `}
+        <GreenButton size='small' onClick={() => this.props.addRow()}>
           <Icon type='plus' />
         </GreenButton>
-        <RedButton onClick={() => this.props.removeRow()}>
+        <RedButton size='small' onClick={() => this.props.removeRow()}>
           <Icon type='minus' />
         </RedButton>
       </ButtonGroup>
-    </Fragment>
+    </div>
   )
 
   renderProgramRow = ({fields}) => {
@@ -144,7 +144,7 @@ class ProgramCompetition extends Component {
     const fieldArrayName = `${type}.programData`;
 
     return(
-      <div className='program-wrap'>
+      <div className='program-wrap' style={{ marginBottom: '20px' }}>
         { this.renderTypeProgram() }
         { this.renderControls() }
         { this.renderColumns() }

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Row, Col } from 'antd';
 import MainContainer from 'Templates/main-container';
 import HeaderTemplate from 'Templates/header-template';
 import { LogoHeader } from 'Atoms/logo';
-import BlueButton from 'Atoms/blue-button';
+import { PurpleButton } from 'Atoms/buttons';
 import Search from 'Templates/search';
 import Badge from 'Templates/badge';
+import { CREATE_COMPETITION } from 'Constants/routes';
 
 class HeaderOrganism extends Component {
   render() {
@@ -23,7 +25,9 @@ class HeaderOrganism extends Component {
               <Badge count={5} />
             </Col>
             <Col span={4} style={{ textAlign: 'right' }}>
-              <BlueButton>Добавить соревнование</BlueButton>
+              <Link to={CREATE_COMPETITION}>
+                <PurpleButton>Добавить соревнование</PurpleButton>
+              </Link>
             </Col>
           </Row>
         </MainContainer>

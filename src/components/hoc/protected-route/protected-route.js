@@ -18,22 +18,21 @@ class ProtectedRoute extends Component {
   };
 
   render() {
-    const { 
-      path,
+    const {
       isAuth,
       noAuth,
       redirect,
-      component: RouteComponent
+      ...props
     } = this.props;
 
     if(noAuth) {
       return !isAuth
-        ? <Route exact path={ path } component={ RouteComponent } />
+        ? <Route exact {...props} />
         : <Redirect to={ redirect } />
     }
 
     return isAuth
-      ? <Route exact path={ path } component={ RouteComponent } />
+      ? <Route exact {...props} />
       : <Redirect to={ redirect } />
   }
 };

@@ -18,6 +18,9 @@ export const FETCH_DELETE_PUPIL_PATH = `${HOST}/pupils/delete`;
 // DICTIONARY PATH's
 export const DICTIONARY_PATH = `${HOST}/dictionary`;
 
+// COMPETITION PATH's
+export const CREATE_COMPETITION_PATH = `${HOST}/competition/create`;
+
 export const createPostHeader = (body = {}) => ({
   method: 'POST',
   mode: 'cors',

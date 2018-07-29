@@ -49,24 +49,28 @@ class CompetitionTimeline extends Component {
 
             return (
               <div key={index} style={{ marginLeft: '15px' }}>
-                <BoldText inline light>{`${timelineTime} - `}</BoldText>
-                <RegularText inline light>{timelineText}</RegularText>
-                {
-                  index === 0 && (
-                    <div>
-                      <Icon
-                        type='delete'
-                        onClick={() => removeParrentField() } 
-                        style={{ fontSize: '15px', marginLeft: '5px', cursor: 'pointer' }}
-                      />
-                      <Icon
-                        type='edit'
-                        onClick={() => editParrentField() } 
-                        style={{ fontSize: '15px', marginLeft: '5px', cursor: 'pointer' }}
-                      />
-                    </div>
-                  )
-                }
+                <BoldText inline light>
+                  <Fragment>
+                    {
+                      index === 0 && (
+                        <Fragment>
+                          <Icon
+                            type='delete'
+                            onClick={() => removeParrentField() } 
+                            style={{ fontSize: '15px', cursor: 'pointer' }}
+                          />
+                          <Icon
+                            type='edit'
+                            onClick={() => editParrentField() } 
+                            style={{ fontSize: '15px', margin: '0 5px', cursor: 'pointer' }}
+                          />
+                        </Fragment>
+                      )
+                    }
+                    {`${timelineTime} - `}
+                  </Fragment>
+                </BoldText>
+                <RegularText inline light>{ timelineText }</RegularText>
               </div>
             );
           })
@@ -102,16 +106,18 @@ class CompetitionTimeline extends Component {
   };
 
   render() {
+    const { style } = this.props;
+
     return (
-      <Fragment>
+      <div style={style}>
         <SectionTitle title='Расписание соревнований' description='Информация о начале соревнований и конце, а также о событиях которые будут происходить в эти даты и часы.' />
-        <FieldArray name="timelines" component={this.renderTimeline} />
+        <FieldArray name='timelinesCompetition' component={this.renderTimeline} />
         <TimelineEdit
           onCloseTimeline={this.onCloseTimeline}
           timeline={this.state.currentEditTimeline}
           isOpenTimelineEdit={this.state.isOpenTimelineEdit}
         />
-      </Fragment>
+      </div>
     );
   }
 }

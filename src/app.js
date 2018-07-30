@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import {
   Route,
   BrowserRouter as Router,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
 import { FETCH_AUTH } from 'Ducks/trainer';
 import { FETCH_DICTIONARY } from 'Ducks/dictionary';
@@ -50,15 +51,15 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <ProtectedRoute noAuth path={ LOGIN } component={ AuthPage } redirect={ PROFILE } />
-          <ProtectedRoute noAuth path={ REGISTRATION } component={ AuthPage } redirect={ PROFILE } />
-          <ProtectedRoute path={ EVENTS } component={ Dashboard } redirect={ LOGIN } />
-          <ProtectedRoute path={ PROFILE } component={ ProfilePage } redirect={ LOGIN } />
-          <ProtectedRoute path={ PUPILS } component={ PupilsPage } redirect={ LOGIN } />
-          <ProtectedRoute path={ COMPETITION_CREATE } component={ CreateCompetitionPage } redirect={ LOGIN } />
-          <ProtectedRoute path={ COMPETITIONS } component={ Competitions } redirect={ LOGIN } />
-          <ProtectedRoute path={ STATISTICS } component={ StatisticsPage } redirect={ LOGIN } />
-          <ProtectedRoute path={ ROOT } component={ ProfilePage } redirect={ LOGIN } />
+          <ProtectedRoute exact noAuth path={ LOGIN } component={ AuthPage } redirect={ PROFILE } />
+          <ProtectedRoute exact noAuth path={ REGISTRATION } component={ AuthPage } redirect={ PROFILE } />
+          <ProtectedRoute exact path={ EVENTS } component={ Dashboard } redirect={ LOGIN } />
+          <ProtectedRoute exact path={ PROFILE } component={ ProfilePage } redirect={ LOGIN } />
+          <ProtectedRoute exact path={ PUPILS } component={ PupilsPage } redirect={ LOGIN } />
+          <ProtectedRoute exact path={ COMPETITION_CREATE } component={ CreateCompetitionPage } redirect={ LOGIN } />
+          <ProtectedRoute exact path={ COMPETITIONS } component={ Competitions } redirect={ LOGIN } />
+          <ProtectedRoute exact path={ STATISTICS } component={ StatisticsPage } redirect={ LOGIN } />
+          <ProtectedRoute exact path={ ROOT } component={ () => <Redirect to={ PROFILE } /> } redirect={ LOGIN } />
           <Route component={ NotFoundPage } />
         </Switch>
       </Router>

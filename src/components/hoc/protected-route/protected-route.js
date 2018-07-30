@@ -27,12 +27,12 @@ class ProtectedRoute extends Component {
 
     if(noAuth) {
       return !isAuth
-        ? <Route exact {...props} />
+        ? <Route {...props} />
         : <Redirect to={ redirect } />
     }
 
     return isAuth
-      ? <Route exact {...props} />
+      ? <Route {...props} />
       : <Redirect to={ redirect } />
   }
 };
